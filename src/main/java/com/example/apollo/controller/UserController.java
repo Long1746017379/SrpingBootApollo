@@ -33,7 +33,7 @@ public class UserController {
     @GetMapping(value = "/hello")
     public String user() {
         log.info("从配置文件获取的值为：{}", name);
-        log.info("刚从master分支合并到wzq分支，杀掉王志强");
+        log.info("刚从master分支合并到wzq分支，杀掉");
         return "Hello SpringBootApollo：" + name;
     }
 
