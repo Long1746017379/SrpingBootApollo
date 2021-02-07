@@ -1,7 +1,9 @@
 package com.example.apollo.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.apollo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +20,9 @@ public class UserController {
 
     @Value("${server.user.name}")
     private String name;
+
+    @Autowired
+    UserService userService;
 
     /**
      * get请求，测试读取配置文件信息
