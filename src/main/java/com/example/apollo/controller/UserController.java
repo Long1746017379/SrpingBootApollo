@@ -36,6 +36,7 @@ public class UserController {
         return "Hello SpringBootApollo：" + name;
     }
 
+
     /**
      * post请求，测试JSONObject
      *
@@ -52,6 +53,7 @@ public class UserController {
             num1 = jsonObject.getInteger("num1");
             num2 = jsonObject.getInteger("num2");
             sum = userService.sum(num1, num2);
+            log.info("求和后的值为：{}", sum);
         } catch (Exception e) {
             e.printStackTrace();
             log.error("JSONObject 类型类型转换异常：{}", e.getMessage());
