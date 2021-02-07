@@ -13,4 +13,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
+    @Override
+    public Integer sum(Integer num1, Integer num2) {
+        return num1 + num2;
+    }
 }
