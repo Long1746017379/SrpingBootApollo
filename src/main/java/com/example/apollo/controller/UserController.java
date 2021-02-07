@@ -33,8 +33,6 @@ public class UserController {
     @GetMapping(value = "/hello")
     public String user() {
         log.info("从配置文件获取的值为：{}", name);
-        log.info("Hello" + name);
-        log.error("Hello" + name);
         return "Hello SpringBootApollo：" + name;
     }
 
