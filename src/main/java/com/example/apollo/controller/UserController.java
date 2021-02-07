@@ -34,6 +34,7 @@ public class UserController {
     public String user() {
         log.info("从配置文件获取的值为：{}", name);
         log.info("Hello" + name);
+        log.info("665");
         return "Hello SpringBootApollo：" + name;
     }
 
