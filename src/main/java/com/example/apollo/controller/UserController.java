@@ -45,6 +45,7 @@ public class UserController {
     public int sum(@RequestBody JSONObject jsonObject){
         Integer num1 = null;
         Integer num2 = null;
+
         try {
             num1 = jsonObject.getInteger("num1");
             num2 = jsonObject.getInteger("num2");
