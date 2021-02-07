@@ -19,6 +19,10 @@ public class UserController {
     @Value("${server.user.name}")
     private String name;
 
+    /**
+     * get请求，测试读取配置文件信息
+     * @return
+     */
     @ResponseBody
     @GetMapping(value = "/hello")
     public String user(){
@@ -26,7 +30,11 @@ public class UserController {
         return "Hello SpringBootApollo：" + name;
     }
 
-
+    /**
+     * post请求，测试JSONObject
+     * @param jsonObject
+     * @return
+     */
     @ResponseBody
     @PostMapping(value = "/sum")
     public int sum(@RequestBody JSONObject jsonObject){
