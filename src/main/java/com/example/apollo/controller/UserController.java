@@ -1,11 +1,15 @@
 package com.example.apollo.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.apollo.entity.User;
 import com.example.apollo.service.UserService;
+import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author DongChengLong
@@ -36,6 +40,32 @@ public class UserController {
         return "Hello SpringBootApollo：" + name;
     }
 
+    /**
+     * post请求，测试JSONObject
+     *
+     * @param jsonObject
+     * @return
+     */
+    @ResponseBody
+    @PostMapping(value = "/queryUser")
+    public List<User> queryUser(@RequestBody JSONObject jsonObject) {
+        List<User> userList = Lists.newArrayList();
+        log.info("==========>>>queryUser接口入参：{}", jsonObject);
+        try {
+            userList = userService.queryUser();
+            log.info("==========>>>queryUser接口返回值：{}", userList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }
+
+    /**
+     * 测试RestFul风格的RequestMapping，method = RequestMethod.GET/POST
+     *
+     * @param jsonObject
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/sub", method = RequestMethod.POST)
     public Integer sub (@RequestBody JSONObject jsonObject) {
@@ -53,30 +83,6 @@ public class UserController {
         return sub;
     }
 
-
-    /**
-     * post请求，测试JSONObject
-     *
-     * @param jsonObject
-     * @return
-     */
-    @ResponseBody
-    @PostMapping(value = "/sum")
-    public Integer sum(@RequestBody JSONObject jsonObject) {
-        Integer num1;
-        Integer num2;
-        Integer sum = null;
-        try {
-            num1 = jsonObject.getInteger("num1");
-            num2 = jsonObject.getInteger("num2");
-            sum = userService.sum(num1, num2);
-            log.info("求和后的值为：{}", sum);
-        } catch (Exception e) {
-            e.printStackTrace();
-            log.error("JSONObject 类型类型转换异常：{}", e.getMessage());
-        }
-        return sum;
-    }
 
 
 }

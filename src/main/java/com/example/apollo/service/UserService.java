@@ -1,5 +1,9 @@
 package com.example.apollo.service;
 
+import com.example.apollo.entity.User;
+
+import java.util.List;
+
 /**
  * @author DongChengLong
  * @desc
@@ -7,7 +11,7 @@ package com.example.apollo.service;
  */
 public interface UserService {
 
-    Integer sum(Integer num1, Integer num2);
+    List<User> queryUser();
 
     Integer sub(Integer num1, Integer num2);
 }

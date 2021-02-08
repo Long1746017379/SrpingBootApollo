@@ -6,8 +6,11 @@ import com.example.apollo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -23,10 +26,12 @@ public class UserServiceImpl implements UserService {
     UserDao userDao;
 
     @Override
-    public Integer sum(Integer num1, Integer num2) {
+    public List<User> queryUser() {
         List<User> list = userDao.queryAll();
-        log.error("list：{}", list);
-        return num1 + num2;
+        if (!CollectionUtils.isEmpty(list)){
+            return list;
+        }
+        return list;
     }
 
     @Override
