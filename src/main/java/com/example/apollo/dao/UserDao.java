@@ -3,6 +3,8 @@ package com.example.apollo.dao;
 import com.example.apollo.entity.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UserDao {
 
@@ -17,4 +19,7 @@ public interface UserDao {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    List<User> queryAll();
+
 }
