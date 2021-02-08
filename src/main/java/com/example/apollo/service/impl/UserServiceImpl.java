@@ -17,4 +17,9 @@ public class UserServiceImpl implements UserService {
     public Integer sum(Integer num1, Integer num2) {
         return num1 + num2;
     }
+
+    @Override
+    public Integer sub(Integer num1, Integer num2) {
+        return num1 - num2;
+    }
 }

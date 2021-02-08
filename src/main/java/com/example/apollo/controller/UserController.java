@@ -36,6 +36,24 @@ public class UserController {
         return "Hello SpringBootApollo：" + name;
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/sub", method = RequestMethod.POST)
+    public Integer sub (@RequestBody JSONObject jsonObject) {
+        Integer num1;
+        Integer num2;
+        Integer sub = null;
+        try {
+            num1 = jsonObject.getInteger("num1");
+            num2 = jsonObject.getInteger("num2");
+            sub = userService.sub(num1, num2);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("JSONObject 类型类型转换异常：{}", e.getMessage());
+        }
+        return sub;
+    }
+
+
     /**
      * post请求，测试JSONObject
      *
