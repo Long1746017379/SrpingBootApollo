@@ -8,7 +8,6 @@ public class ApolloApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ApolloApplication.class, args);
-        System.out.println("测试");
     }
 
 }
