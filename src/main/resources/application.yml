@@ -8,5 +8,5 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     password: abcdef
-    url: jdbc:mysql://127.0.0.1:3306/more_flow_app?serverTimezone=UTC&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/testmybatis?serverTimezone=UTC&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
     username: root
