@@ -8,4 +8,6 @@ package com.example.apollo.service;
 public interface UserService {
 
     Integer sum(Integer num1, Integer num2);
+
+    Integer sub(Integer num1, Integer num2);
 }
