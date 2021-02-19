@@ -1,11 +1,13 @@
 package com.example.apollo.dao;
 
 import com.example.apollo.entity.User;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
+//@Mapper
 public interface UserDao {
 
     int deleteByPrimaryKey(String id);
