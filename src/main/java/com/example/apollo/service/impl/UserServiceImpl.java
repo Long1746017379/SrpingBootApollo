@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,9 +25,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> queryUser() {
-        List<User> list = userDao.queryAll();
-        if (!CollectionUtils.isEmpty(list)){
-            return list;
+        List<User> list = new ArrayList<>();
+        try {
+            list = userDao.queryAll();
+            if (!CollectionUtils.isEmpty(list)){
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.info("查询异常：{}", e.getMessage());
         }
         return list;
     }
