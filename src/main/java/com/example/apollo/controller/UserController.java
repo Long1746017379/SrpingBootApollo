@@ -62,7 +62,6 @@ public class UserController {
 
     /**
      * 测试RestFul风格的RequestMapping，method = RequestMethod.GET/POST
-     *
      * @param jsonObject
      * @return
      */
