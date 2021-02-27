@@ -64,4 +64,20 @@
     where id = #{id,jdbcType=VARCHAR}
   </update>
 
+
+  <!--2021-02-25 z.w.l add 添加用户 -->
+  <insert id="addUser" parameterType="com.example.apollo.dao.UserDao" keyProperty="id">
+        insert into user (id,name) values(#{user.id},#{user.name})
+  </insert>
+
+  <!--2021-02-25 z.w.l add 修改用户 -->
+  <update id="updateUser" parameterType="com.example.apollo.dao.UserDao">
+        update user set name=#{user.name}  where id=#{user.id}
+  </update>
+
+  <!--2021-02-27 z.w.l add 删除用户-->
+  <delete id="deleteUser" parameterType="com.example.apollo.dao.UserDao" >
+        delete from user where id=#{user.id}
+  </delete>
+
 </mapper>

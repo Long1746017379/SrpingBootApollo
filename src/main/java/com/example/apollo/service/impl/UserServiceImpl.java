@@ -42,4 +42,50 @@ public class UserServiceImpl implements UserService {
     public Integer sub(Integer num1, Integer num2) {
         return num1 - num2;
     }
+
+
+    /**
+     * 2021-02-24 z.w.l add
+     * 用户模块servies：addUser 添加用户方法
+     */
+    @Override
+    public int addUser(User user) {
+        int res=0;
+        try {
+            res=userDao.addUser(user);
+        } catch (Exception e) {
+            log.error("用户模块service：addUser 添加用户方法==出现异常=="+e);
+        }
+        return res;
+    }
+
+    /**
+     *2021-02-25 z.w.l add
+     * 用户模块：修改用户信息方法
+     */
+    @Override
+    public int updateUser(User user) {
+        int res=0;
+        try {
+            res=userDao.updateUser(user);
+        } catch (Exception e) {
+            log.error("用户模块service层：updateUser 修改用户信息方法==出现异常=="+e);
+        }
+        return res;
+    }
+
+    /**
+     *2021-02-27 z.w.l add
+     * 用户模块：删除用户方法
+     */
+    @Override
+    public int deleteUser(User user) {
+        int res=0;
+        try {
+            res=userDao.deleteUser(user);
+        } catch (Exception e) {
+            log.error("用户模块service：删除用户方法deleteUser==出现异常=="+e);
+        }
+        return res;
+    }
 }
