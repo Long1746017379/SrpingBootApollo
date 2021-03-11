@@ -1,11 +1,15 @@
 package com.example.apollo.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.apollo.entity.User;
 import com.example.apollo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.Map;
 
 /**
  * @author DongChengLong
@@ -60,5 +64,19 @@ public class UserController {
         return sum;
     }
 
+
+    @PostMapping("/test")
+    public void test(@Valid @RequestBody User user) {
+        log.info("请求入参:{}", user);
+        log.info("phone:{}", user.getPersonPhone());
+        log.info("age:{}", user.getAge());
+
+        int i = 1;
+        System.out.println(i / 0);
+
+        Map map = null;
+        map.put("key", "key");
+
+    }
 
 }
