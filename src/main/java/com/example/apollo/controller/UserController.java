@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.Map;
+
 import java.util.List;
 
 /**
@@ -84,5 +87,19 @@ public class UserController {
     }
 
 
+
+    @PostMapping("/test")
+    public void test(@Valid @RequestBody User user) {
+        log.info("请求入参:{}", user);
+        log.info("phone:{}", user.getPersonPhone());
+        log.info("age:{}", user.getAge());
+
+        int i = 1;
+        System.out.println(i / 0);
+
+        Map map = null;
+        map.put("key", "key");
+
+    }
 
 }

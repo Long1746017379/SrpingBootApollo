@@ -1,18 +1,26 @@
 package com.example.apollo.entity;
 
-import java.io.Serializable;
 import lombok.Data;
 
-/**
- * user
- * @author 
- */
+import javax.validation.constraints.NotNull;
+
 @Data
-public class User implements Serializable {
+public class User extends Person {
 
-    private String id;
+    @NotNull(message = "userId不能为空")
+    private String userId;
 
-    private String name;
+    private String userName;
 
-    private static final long serialVersionUID = 1L;
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", userName='" + userName + '\'' +
+                ", phone='" + super.getPersonPhone() + '\'' +
+                ", age='" + super.getAge() + '\'' +
+                '}';
+    }
+
+
 }
