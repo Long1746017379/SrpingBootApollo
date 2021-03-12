@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.apollo.dao.TAreaDao">
+
+  <resultMap id="BaseResultMap" type="com.example.apollo.entity.TArea">
+    <id column="AREA_CODE" jdbcType="VARCHAR" property="areaCode" />
+    <result column="AREA_NAME" jdbcType="VARCHAR" property="areaName" />
+    <result column="AREA_FRAME" jdbcType="VARCHAR" property="areaFrame" />
+    <result column="ORDER_NO" jdbcType="VARCHAR" property="orderNo" />
+    <result column="PARENT_AREA_CODE" jdbcType="VARCHAR" property="parentAreaCode" />
+    <result column="START_DATE" jdbcType="INTEGER" property="startDate" />
+    <result column="END_DATE" jdbcType="INTEGER" property="endDate" />
+    <result column="AREA_LEVEL" jdbcType="INTEGER" property="areaLevel" />
+    <result column="VALIDFLAG" jdbcType="INTEGER" property="validflag" />
+    <result column="AREA_CODE1" jdbcType="VARCHAR" property="areaCode1" />
+    <result column="AREA_CODE2" jdbcType="VARCHAR" property="areaCode2" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="PARA" jdbcType="VARCHAR" property="para" />
+    <result column="PARA_ID" jdbcType="VARCHAR" property="paraId" />
+    <result column="PARA_VALUE" jdbcType="VARCHAR" property="paraValue" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    AREA_CODE, AREA_NAME, AREA_FRAME, ORDER_NO, PARENT_AREA_CODE, START_DATE, END_DATE, 
+    AREA_LEVEL, VALIDFLAG, AREA_CODE1, AREA_CODE2, REMARK, PARA, PARA_ID, PARA_VALUE, 
+    `STATUS`, CREATE_TIME
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_area
+    where AREA_CODE = #{areaCode,jdbcType=VARCHAR}
+  </select>
+
+    <select id="getProvEparchDisMap" resultType="java.util.Map">
+        select AREA_CODE,AREA_NAME from t_area where AREA_LEVEL = #{area_level,jdbcType=INTEGER} and VALIDFLAG = 0
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_area
+    where AREA_CODE = #{areaCode,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" keyColumn="AREA_CODE" keyProperty="areaCode" parameterType="com.example.apollo.entity.TArea" useGeneratedKeys="true">
+    insert into t_area (AREA_NAME, AREA_FRAME, ORDER_NO, 
+      PARENT_AREA_CODE, START_DATE, END_DATE, 
+      AREA_LEVEL, VALIDFLAG, AREA_CODE1, 
+      AREA_CODE2, REMARK, PARA, 
+      PARA_ID, PARA_VALUE, `STATUS`, 
+      CREATE_TIME)
+    values (#{areaName,jdbcType=VARCHAR}, #{areaFrame,jdbcType=VARCHAR}, #{orderNo,jdbcType=VARCHAR}, 
+      #{parentAreaCode,jdbcType=VARCHAR}, #{startDate,jdbcType=INTEGER}, #{endDate,jdbcType=INTEGER}, 
+      #{areaLevel,jdbcType=INTEGER}, #{validflag,jdbcType=INTEGER}, #{areaCode1,jdbcType=VARCHAR}, 
+      #{areaCode2,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{para,jdbcType=VARCHAR}, 
+      #{paraId,jdbcType=VARCHAR}, #{paraValue,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+
+  <insert id="insertSelective" keyColumn="AREA_CODE" keyProperty="areaCode" parameterType="com.example.apollo.entity.TArea" useGeneratedKeys="true">
+    insert into t_area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="areaName != null">
+        AREA_NAME,
+      </if>
+      <if test="areaFrame != null">
+        AREA_FRAME,
+      </if>
+      <if test="orderNo != null">
+        ORDER_NO,
+      </if>
+      <if test="parentAreaCode != null">
+        PARENT_AREA_CODE,
+      </if>
+      <if test="startDate != null">
+        START_DATE,
+      </if>
+      <if test="endDate != null">
+        END_DATE,
+      </if>
+      <if test="areaLevel != null">
+        AREA_LEVEL,
+      </if>
+      <if test="validflag != null">
+        VALIDFLAG,
+      </if>
+      <if test="areaCode1 != null">
+        AREA_CODE1,
+      </if>
+      <if test="areaCode2 != null">
+        AREA_CODE2,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="para != null">
+        PARA,
+      </if>
+      <if test="paraId != null">
+        PARA_ID,
+      </if>
+      <if test="paraValue != null">
+        PARA_VALUE,
+      </if>
+      <if test="status != null">
+        `STATUS`,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="areaName != null">
+        #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaFrame != null">
+        #{areaFrame,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="parentAreaCode != null">
+        #{parentAreaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null">
+        #{startDate,jdbcType=INTEGER},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=INTEGER},
+      </if>
+      <if test="areaLevel != null">
+        #{areaLevel,jdbcType=INTEGER},
+      </if>
+      <if test="validflag != null">
+        #{validflag,jdbcType=INTEGER},
+      </if>
+      <if test="areaCode1 != null">
+        #{areaCode1,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode2 != null">
+        #{areaCode2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="para != null">
+        #{para,jdbcType=VARCHAR},
+      </if>
+      <if test="paraId != null">
+        #{paraId,jdbcType=VARCHAR},
+      </if>
+      <if test="paraValue != null">
+        #{paraValue,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.apollo.entity.TArea">
+    update t_area
+    <set>
+      <if test="areaName != null">
+        AREA_NAME = #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaFrame != null">
+        AREA_FRAME = #{areaFrame,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="parentAreaCode != null">
+        PARENT_AREA_CODE = #{parentAreaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null">
+        START_DATE = #{startDate,jdbcType=INTEGER},
+      </if>
+      <if test="endDate != null">
+        END_DATE = #{endDate,jdbcType=INTEGER},
+      </if>
+      <if test="areaLevel != null">
+        AREA_LEVEL = #{areaLevel,jdbcType=INTEGER},
+      </if>
+      <if test="validflag != null">
+        VALIDFLAG = #{validflag,jdbcType=INTEGER},
+      </if>
+      <if test="areaCode1 != null">
+        AREA_CODE1 = #{areaCode1,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode2 != null">
+        AREA_CODE2 = #{areaCode2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="para != null">
+        PARA = #{para,jdbcType=VARCHAR},
+      </if>
+      <if test="paraId != null">
+        PARA_ID = #{paraId,jdbcType=VARCHAR},
+      </if>
+      <if test="paraValue != null">
+        PARA_VALUE = #{paraValue,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `STATUS` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where AREA_CODE = #{areaCode,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.example.apollo.entity.TArea">
+    update t_area
+    set AREA_NAME = #{areaName,jdbcType=VARCHAR},
+      AREA_FRAME = #{areaFrame,jdbcType=VARCHAR},
+      ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      PARENT_AREA_CODE = #{parentAreaCode,jdbcType=VARCHAR},
+      START_DATE = #{startDate,jdbcType=INTEGER},
+      END_DATE = #{endDate,jdbcType=INTEGER},
+      AREA_LEVEL = #{areaLevel,jdbcType=INTEGER},
+      VALIDFLAG = #{validflag,jdbcType=INTEGER},
+      AREA_CODE1 = #{areaCode1,jdbcType=VARCHAR},
+      AREA_CODE2 = #{areaCode2,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      PARA = #{para,jdbcType=VARCHAR},
+      PARA_ID = #{paraId,jdbcType=VARCHAR},
+      PARA_VALUE = #{paraValue,jdbcType=VARCHAR},
+      `STATUS` = #{status,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+    where AREA_CODE = #{areaCode,jdbcType=VARCHAR}
+  </update>
+
+</mapper>
