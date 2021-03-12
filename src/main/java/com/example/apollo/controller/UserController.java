@@ -1,6 +1,7 @@
 package com.example.apollo.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.apollo.config.InitEngineerConfig;
 import com.example.apollo.entity.User;
 import com.example.apollo.service.UserService;
 import com.google.common.collect.Lists;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.Map;
 
 import java.util.List;
@@ -40,6 +42,14 @@ public class UserController {
     @GetMapping(value = "/hello")
     public String user() {
         log.info("从配置文件获取的值为：{}", name);
+        log.info("省份Map大小：{}，内容：{}", InitEngineerConfig.provMapping.size(), InitEngineerConfig.provMapping);
+        log.info("地市Map大小：{}，内容：{}", InitEngineerConfig.eparchyMapping.size(), InitEngineerConfig.eparchyMapping);
+        log.info("区县Map大小：{}，内容：{}", InitEngineerConfig.districtMapping.size(), InitEngineerConfig.districtMapping);
+
+        if (InitEngineerConfig.provMapping.containsKey("河北")) {
+            log.info("Value：{}", InitEngineerConfig.provMapping.get("河北"));
+        }
+
         return "Hello SpringBootApollo：" + name;
     }
 
@@ -71,7 +81,7 @@ public class UserController {
      */
     @ResponseBody
     @RequestMapping(value = "/sub", method = RequestMethod.POST)
-    public Integer sub (@RequestBody JSONObject jsonObject) {
+    public Integer sub(@RequestBody JSONObject jsonObject) {
         Integer num1;
         Integer num2;
         Integer sub = null;
@@ -85,7 +95,6 @@ public class UserController {
         }
         return sub;
     }
-
 
 
     @PostMapping("/test")

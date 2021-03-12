@@ -1,8 +1,11 @@
 package com.example.apollo.dao;
 
+import com.example.apollo.entity.ProvEparchDisMap;
 import com.example.apollo.entity.TArea;
+import org.apache.ibatis.annotations.MapKey;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -20,5 +23,6 @@ public interface TAreaDao {
 
     int updateByPrimaryKey(TArea record);
 
-    Map<Integer, String> getProvEparchDisMap(int area_level);
+    List<ProvEparchDisMap> getProvEparchDisMap(int area_level);
+
 }

@@ -35,8 +35,8 @@
     where AREA_CODE = #{areaCode,jdbcType=VARCHAR}
   </select>
 
-    <select id="getProvEparchDisMap" resultType="java.util.Map">
-        select AREA_CODE,AREA_NAME from t_area where AREA_LEVEL = #{area_level,jdbcType=INTEGER} and VALIDFLAG = 0
+    <select id="getProvEparchDisMap" resultType="com.example.apollo.entity.ProvEparchDisMap">
+        select AREA_CODE as code, AREA_NAME as value from t_area where AREA_LEVEL = #{area_level,jdbcType=INTEGER} and VALIDFLAG = 0
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
